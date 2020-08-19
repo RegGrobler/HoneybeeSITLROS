@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<sdf version='1.6'>
+  <world name='hanabi'>
+      <include>
+        <uri>model://sun</uri>
+      </include>
+      <include>
+        <uri>model://ground_plane</uri>
+      </include>
+      <include>
+        <uri>model://aruco_visual_marker_0</uri>
+        <name>AR_tag</name>
+	<pose>0 0 0 0 0 0</pose>
+      </include>
+ 
+      <include>
+        <uri>model://camera</uri>
+        <name>drone_camera</name>
+        <pose>0 0 7 0 0 0</pose>
+      </include>
+  </world>
+</sdf>

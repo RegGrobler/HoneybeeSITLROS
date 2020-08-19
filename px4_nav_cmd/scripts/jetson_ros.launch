@@ -1,0 +1,10 @@
+<!-- Start all nodes needed for autolanding -->
+<launch>
+	<include file="$(find mavros)/launch/px4.launch"/>
+	<include file="$(find aruco_detect)/launch/aruco_detect.launch" />
+	<node name="camera_FCU_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 -1.57 0 3.14159 fcu camera_link 200" respawn="true" />
+	<include file="$(find fiducial_slam)/launch/fiducial_slam.launch"/>
+	<node name="relay_SLAM_PX4" pkg="topic_tools" type="relay" args="/fiducial_pose /mavros/vision_pose/pose_cov"/>
+	<node name="waypoint_scheduler" pkg="px4_nav_cmd" type="waypoint_scheduler.py"/>
+	<node name="Log_EKF" pkg="px4_nav_cmd" type="EKF_SLAM_Log.py"/>
+</launch>
